@@ -40,7 +40,6 @@ RUN apt-get update && \
         make \
         libpcre3-dev \
         zlib1g-dev \
-        libldap2-dev \
         libssl-dev \
         wget && \
     apt-get autoremove -y && \
