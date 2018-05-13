@@ -23,7 +23,7 @@ RUN apt-get update && \
     cd /opt/src/nginx && \
     git checkout tags/$(cat /opt/src/nginx.latest.version) && \
     ./auto/configure \
-        --add-module=/tmp/nginx-auth-ldap \
+        --add-module=/opt/src/nginx-auth-ldap \
         --with-http_ssl_module \
         --with-http_gzip_static_module \
         --with-pcre \
@@ -45,16 +45,13 @@ RUN apt-get update && \
         wget && \
     apt-get autoremove -y && \
     apt-get -y clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /usr/src/* && \
-    rm -rf /tmp/* && \
-    rm -rf /usr/share/doc/* && \
-    rm -rf /usr/share/man/* && \
-    rm -rf /usr/share/locale/*
+    rm -rf /var/lib/apt/lists/* /usr/src/* /tmp/* /usr/share/doc/* /usr/share/man/* /usr/share/locale/* /opt/src
 
 # link logs to docker log collector.
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
+
+ADD nginx.conf /etc/nginx/
 
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
