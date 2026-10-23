@@ -189,7 +189,7 @@ jobs:
             NGINX_VERSION=${{ steps.release.outputs.version }}
           push: ${{ !inputs.dry_run }}
           tags: ${{ steps.release.outputs.tags }}
-          provenance: true
+          provenance: false
           labels: |
             org.opencontainers.image.title=NGINX with the authentication with a directory of LDAP
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
