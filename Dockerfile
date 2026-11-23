@@ -1,8 +1,8 @@
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 LABEL maintainer="Satish Gaikwad <satish@satishweb.com>"
 
-ARG NGINX_VERSION=1.30.6
-ARG LDAP_MODULE_COMMIT=241200eac8e4acae74d353291bd27f79e5ca3dc4
+ARG NGINX_VERSION=1.30.7
+ARG LDAP_MODULE_COMMIT=c7cc57b2fdec647efa37883f96585058eda4382c
 
 ENV DEBIAN_FRONTEND=noninteractive
 
